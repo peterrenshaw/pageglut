@@ -1,0 +1,32 @@
+
+2016JAN21
+
+NEW FEATURES
+
+* cli with options
+- debug ON/OFF
+- call query list from file
+
+* reports
+- export data to file as json for further use
+
+* enumeration
+- enumerate resources per url
+
+
+IMPROVEMENTS
+
+* Page queries URL
+- list of URLS obtained
+- when looping thru urls
++ check if url is requested by page?
++ ie: image, css file NOT .html file found as link in page
++ another hint is via content-type
+
+* re-check resources for broken urls and fix
+- sometimes resource links found on pages are relative
+- when I do a check if they are valid, rel links will break
+- fix them, then re-try
+
+
+
