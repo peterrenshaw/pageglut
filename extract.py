@@ -101,6 +101,7 @@ class Page(object):
                  #------ extract start (resources from page) ------
                  img_url = self.get_image(r.text)
                  css_url = self.get_css(r.text)
+                 
                  urls = img_url + css_url
                  for u in urls:
                      self.objdis.msg2('url <{}>'.format(u))
@@ -109,7 +110,11 @@ class Page(object):
                      # --- does url require fixing? ---
                      if not self.objtool.is_valid_url(u):
                          fu = self.objtool.url_repair(page_url, u)
-                         self.objdis.warn('fix <{}>'.format(fu))
+                         if fu:
+                             self.objdis.warn('fixed url <{}>'.format(fu))
+                         else:
+                             self.objdis.err("skip broken url <{}>".format(u))
+                             break
                      else:
                          fu = u
                          self.objdis.msg2("ok")
@@ -198,11 +203,15 @@ class Page(object):
                      f = item
                  if self.objtool.is_valid_url(f):
                      urls.append(f)
+                 elif f:
+                     urls.append(f)
+                     self.objdis.warn("problem url, needs fixing <{}>".format(f))
                  else:
                      self.objdis.warn("invalid url <{}>".format(f))
              else:
                  pass
 
+         self.objdis.msg2("extract {} <{}>".format(label, urls))
          return urls
 
 
@@ -235,11 +244,12 @@ def main():
              'https://www.facebook.com/dave.winer.12/posts/409275095946568?comment_id=409418535932224&comment_tracking=%7B%22tn%22%3A%22R1%22%7D&pnref=story',
              'https://medium.com/@davewiner/anywhere-but-medium-5450cb19f2c1#.2gv2klp7h']
 
+    URLS3 = ['http://192.168.1.2:8000']
 
     print("page\tresource\ttotal\t\turl")
     print("(b)\t(b)\t\t(Kb)")
     print("----------------------------------------------------------")
-    for url in URLS2:
+    for url in URLS:
         process(url)
     print("-----------------------------------------------------------")
 

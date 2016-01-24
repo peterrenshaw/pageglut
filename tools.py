@@ -57,7 +57,10 @@ def url_repair(base_url, url):
     u = urllib.parse.urljoin(base_url, url)
     #print("tools: base_url <{}> url <{}>".format(base_url, url))
     #print("tools.url_repair: u={}".format(u))
-    return u
+    if is_valid_url(u):
+        return u
+    else:
+        return ""
 def url_extract(url, index=1):
     """
     given url, extract specific pieces by index
@@ -69,24 +72,33 @@ def url_extract(url, index=1):
     else:
         return ""
 def url_parse(url, index=2):
+    """
+    parse url using urlib.parse.urlparse to extract
+    filenames. The index defaults to http://domainname/PATH
+    """
     if url:
         url_parse = urllib.parse.urlparse(url)
         return url_parse[index]
     else:
         return ""
 def url2filename(url):
-    """given a url, extract filename.ext"""
+    """
+    given a url, extract filename.ext using url_parse
+    """
     netloc = url_parse(url)
     if netloc:
         sfn = os.path.split(netloc)
-        if len(sfn) > 1: 
-            fn = sfn[len(sfn)-1]
+        # is split filename usable?
+        if len(sfn) > 1:
+            # ['domain','path'] <== want path
+            fn_index = len(sfn) - 1 # max index: get last in list 
+            fn = sfn[fn_index]      # get filename
         else:
             fn = sfn
         return fn
     else:
         return ""
-def url2name(url):
+def url2name(url, name_unknown='noname'):
     """given a url, convert to a readable name"""
     netloc = url_extract(url)
     if netloc:
@@ -100,10 +112,11 @@ def url2name(url):
         return name
     else:
         # don't know a name? make it up
-        return "noname"
-
+        return name_unknown
 def copy_dict(old):
-    """re-use a dictionary as a structure"""
+    """
+    re-use a dictionary
+    """
     new = {}
     for key in old.keys():
         new[key] = old[key]
