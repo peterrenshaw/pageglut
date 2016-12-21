@@ -2,6 +2,9 @@
 # ~*~ encoding: utf-8 ~*~
 
 
+import argparse
+
+
 import tools
 
 
@@ -11,7 +14,7 @@ import html5lib
 
 
 #======
-# name: page.py
+# name: extract.py
 # date: 2016JAN21
 # prog: pr
 # desc: request page, extract resources, count the size of a page
@@ -230,28 +233,32 @@ def process(url):
 
     p = None
 
+
+def display(url):
+    """show output"""
+    print("page\tresource\ttotal\t\turl")
+    print("(b)\t(b)\t\t(Kb)")
+    print("----------------------------------------------------------")
+    process(url)
+    print("-----------------------------------------------------------")
+
+
 #------
 # main 
 #------
 def main():
-    URLS = ["http://192.168.1.9", "http://seldomlogical.com", 
-            "http://news.ycombinator.com", "http://guardian.co.uk",
-            "http://theage.com.au","http://buzzfeed.com",
-            "http://kittenskittenskittens.tumblr.com"]
+    parser = argparse.ArgumentParser(description="calculate page sizes")
+    parser.add_argument("-u","--url", help="URL to inspect")
+    parser.add_argument("-v","--verbose",action="store_true",help="verbosity of debug messages")
+    
+    options = parser.parse_args()
 
-    URLS2 = ['https://twitter.com/davewiner/status/689672660675121152', 
-             'http://scripting.com/liveblog/users/davewiner/2016/01/20/0900.html',
-             'https://www.facebook.com/dave.winer.12/posts/409275095946568?comment_id=409418535932224&comment_tracking=%7B%22tn%22%3A%22R1%22%7D&pnref=story',
-             'https://medium.com/@davewiner/anywhere-but-medium-5450cb19f2c1#.2gv2klp7h']
+    if options.verbose:
+        tools.DEBUG = True
 
-    URLS3 = ['http://192.168.1.2:8000']
+    if options.url:
+        display(options.url)
 
-    print("page\tresource\ttotal\t\turl")
-    print("(b)\t(b)\t\t(Kb)")
-    print("----------------------------------------------------------")
-    for url in URLS:
-        process(url)
-    print("-----------------------------------------------------------")
 
 
 #----- main cli entry point ------
@@ -260,3 +267,4 @@ if __name__ == "__main__":
 
 
 ## vim: ff=unix:ts=4:sw=4:tw=78:noai:expandtab
+

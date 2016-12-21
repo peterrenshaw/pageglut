@@ -207,9 +207,8 @@ class Page(object):
         size = 0
         if 'content-length' in header:
             size = header['content-length']
-        elif:
-            size = len(text)
-        else: size = 0
+        else:
+            size = len(text):
 
         self.measurement['header'] = header
         self.measurement['size'] = size
@@ -319,15 +318,9 @@ def extract(url):
 #------
 def main():
     """main cli entry point"""
-    urls = ["http://192.168.1.9",
-            "http://192.168.1.9/archives",
-            "http://seldomlogical.com/qvh.html",
+    urls = ["http://seldomlogical.com/qvh.html",
             "http://abc.net.au/news",
             "http://news.ycombinator.com/",
-            "http://www.theage.com.au/",
-            "http://smh.com.au",
-            "http://google.com/ncr",
-            "http://google.com.au/",
             "http://guardian.co.uk/"]
     for u in urls:
         extract(u)

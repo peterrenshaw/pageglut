@@ -15,7 +15,9 @@ import validators     # is_valid_url
 import urllib.parse   # url_extract, url_parse 
 
 
-DEBUG = True
+DEBUG = False
+
+
 #======
 # name: Display
 # date: 2016JAN10
