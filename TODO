@@ -13,15 +13,15 @@ TESTS
 NEW FEATURES
 
 * cli with options
-- debug ON/OFF
-- call query list from file
+1 - debug ON/OFF
+0 - call query list from file
 
 * reports
-- export data to file as json for further use
+0 - export data to file as json for further use
 
 * enumeration
-- enumerate resources per url
-
+0 - enumerate resources per url
+ 
 
 IMPROVEMENTS
 
