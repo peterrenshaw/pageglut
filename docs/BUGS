@@ -1,0 +1,68 @@
+#=======
+#                                  __      __ 
+#    ____  ____ _____ ____  ____ _/ /_  __/ /_
+#   / __ \/ __ `/ __ `/ _ \/ __ `/ / / / / __/
+#  / /_/ / /_/ / /_/ /  __/ /_/ / / /_/ / /_  
+# / .___/\__,_/\__, /\___/\__, /_/\__,_/\__/  
+#/_/          /____/     /____/               
+#
+# This file is part of Page Glut.
+#
+# Page Glut is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# Page Glut is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Page Glut.  If not, see <http://www.gnu.org/licenses/gpl-3.0.txt>.
+#
+# name: BUGS
+# date: 2016DEC23
+# prog: pr
+# desc: Page Glut: read docs/ABOUT.txt
+#======
+
+
+2016DEC23
+    Probably just a bad url. Fix so we get a nice error.
+
+
+    DESCRIPTION
+    * doesn't grab the necessary data
+
+    WHAT I WANT
+    * I want to show a nice, "Error: problems with network error"
+
+    WHAT I GET
+    * pointing to http://news.ycombintor.com/classic I get this:
+
+Traceback (most recent call last):
+  File "pageglut.py", line 310, in <module>
+    main()
+  File "pageglut.py", line 304, in main
+    display(options.url, debug)
+  File "pageglut.py", line 286, in display
+    process(url, debug)
+  File "pageglut.py", line 268, in process
+    p.request(url)
+  File "pageglut.py", line 126, in request
+    r = self.objreq.get(page_url)
+  File "/opt/local/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/requests-2.11.1-py3.5.egg/requests/api.py", line 70, in get
+    return request('get', url, params=params, **kwargs)
+  File "/opt/local/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/requests-2.11.1-py3.5.egg/requests/api.py", line 56, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/opt/local/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/requests-2.11.1-py3.5.egg/requests/sessions.py", line 488, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/opt/local/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/requests-2.11.1-py3.5.egg/requests/sessions.py", line 609, in send
+    r = adapter.send(request, **kwargs)
+  File "/opt/local/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/requests-2.11.1-py3.5.egg/requests/adapters.py", line 487, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='news.ycombinat.com', port=80): Max retries exceeded with url: /classic (Caused by NewConnectionError('<requests.packages.urllib3.connection.HTTPConnection object at 0x1074eae48>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known',))
+
+
+# vim: ff=unix:ts=4:sw=4:tw=78:noai:expandtab
