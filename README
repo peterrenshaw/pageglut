@@ -27,24 +27,35 @@
 # desc: Page Gluts: read docs/ABOUT.txt
 #======
 
+
 I wrote this quick hack to work out how heavy a page was. It works as shown below.
 Only two options, the -v option (verbosity) tells you everything that is goint on,
 the -u option (URL) lets you examine the index page found at this URL.
 
 
 Requirements:
+=============
 
 Python3 is used here, though I use nothing (that I'm aware of) that could not be used in py2X.
 
-                  # Source                                         Docs
-                  # -----------------------------------------------------------------------------------------
-import bs4        # https://www.crummy.com/software/BeautifulSoup  http://beautiful-soup-4.readthedocs.io 
-import requests   # https://github.com/kennethreitz/requests       http://docs.python-requests.org/en/latest/
-import html5lib   # https://github.com/html5lib/html5lib-python    https://html5lib.readthedocs.io/en/latest/
-import validators # https://github.com/kvesteri/validators         https://validators.readthedocs.io/en/latest/
+# ------- start requirements -------------------------------------------------------------------
+import bs4        # source: https://www.crummy.com/software/BeautifulSoup  
+                  # docs:   http://beautiful-soup-4.readthedocs.io 
+
+
+import requests   # source: https://github.com/kennethreitz/requests
+                  # docs:   http://docs.python-requests.org/en/latest/
+
+import html5lib   # source: https://github.com/html5lib/html5lib-python
+                  # docs:   https://html5lib.readthedocs.io/en/latest/
+
+import validators # source: https://github.com/kvesteri/validators 
+                  # docs:   https://validators.readthedocs.io/en/latest/
+# ------- end requirements --------------------------------------------------------------------
 
 
 Example use:
+============
 
 $ python3.5 pageglut.py -v -u http://news.ycombinator.com
 
