@@ -15,7 +15,7 @@ import validators     # is_valid_url
 import urllib.parse   # url_extract, url_parse 
 
 
-DEBUG = False
+DEBUG = True
 
 
 #======

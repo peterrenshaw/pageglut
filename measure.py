@@ -15,14 +15,19 @@ import html5lib
 
 #======
 # name: extract.py
-# date: 2016JAN21
+# date: 2016DEC23
+#       2016JAN21
 # prog: pr
 # desc: request page, extract resources, count the size of a page
+# todo: javascript request.
 #======
 
 
 #------
 # TODO
+#      * Page has JS?
+#      - grab the size of the JS loaded
+#     
 #      * Page queries URL
 #      - list of URLS obtained
 #      - when looping thru urls
@@ -104,8 +109,9 @@ class Page(object):
                  #------ extract start (resources from page) ------
                  img_url = self.get_image(r.text)
                  css_url = self.get_css(r.text)
+                 js_url = self.get_js(r.text)
                  
-                 urls = img_url + css_url
+                 urls = img_url + css_url + js_url
                  for u in urls:
                      self.objdis.msg2('url <{}>'.format(u))
 
@@ -185,11 +191,17 @@ class Page(object):
              return False
      def get_image(self, data):
          """search for image resources in a page of data"""
+         # <img src="s.gif" height="10" width="0">
          self.objdis.msg2('get img')
          return self.extract(data, 'image', 'img', 'src')
      def get_css(self, data):
+         # <link rel="stylesheet" type="text/css" href="news.css?AMTnWwphWLGKuspwrcEL">
          self.objdis.msg2('get css')
          return self.extract(data, 'css', 'link', 'href')
+     def get_js(self, data):
+         # <script type='text/javascript' src='hn.js?AMTnWwphWLGKuspwrcEL'></script></html>
+         self.objdis.msg2('get js')
+         return self.extract(data, 'javascript', 'script', 'src')
      #------ get/set end ------
      def extract(self, data, label, key1, key2):
          self.objdis.msg2("extract")
@@ -229,7 +241,7 @@ def process(url):
     psize =  int(p.data['size'])
     p.data['total'] = psize + rsize
 
-    print("{}\t{}\t\t{}\t<{}>...".format(psize, rsize, (psize + rsize) / 1000, url))
+    print("{}\t{}\t\t{}\t\t<{}>...".format(psize, rsize, (psize + rsize) / 1000, url))
 
     p = None
 
