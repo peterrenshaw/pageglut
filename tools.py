@@ -2,20 +2,45 @@
 # ~*~ encoding: utf-8 ~*~
 
 
-#======
+#=======
+#                                  __      __ 
+#    ____  ____ _____ ____  ____ _/ /_  __/ /_
+#   / __ \/ __ `/ __ `/ _ \/ __ `/ / / / / __/
+#  / /_/ / /_/ / /_/ /  __/ /_/ / / /_/ / /_  
+# / .___/\__,_/\__, /\___/\__, /_/\__,_/\__/  
+#/_/          /____/     /____/               
+#
+# This file is part of Page Glut.
+#
+# Page Glut is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# Page Glut is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Page Glut.  If not, see <http://www.gnu.org/licenses/gpl-3.0.txt>.
+#
 # name: tools.py
-# date: 2016JAN12
+# date: 2016DEC23
+#       2016JAN12
 # prog: pr
-# desc: misc tools used
+# desc: misc tools used, Page Glut: read docs/ABOUT.txt
 #======
 
 
 import os.path        # url2filename
-import validators     # is_valid_url
 import urllib.parse   # url_extract, url_parse 
 
 
-DEBUG = True
+import validators     # is_valid_url
+
+
+DEBUG = False
 
 
 #======

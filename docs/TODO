@@ -1,0 +1,71 @@
+#=======
+#                                  __      __ 
+#    ____  ____ _____ ____  ____ _/ /_  __/ /_
+#   / __ \/ __ `/ __ `/ _ \/ __ `/ / / / / __/
+#  / /_/ / /_/ / /_/ /  __/ /_/ / / /_/ / /_  
+# / .___/\__,_/\__, /\___/\__, /_/\__,_/\__/  
+#/_/          /____/     /____/               
+#
+# This file is part of Page Glut.
+#
+# Page Glut is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# Page Glut is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Page Glut.  If not, see <http://www.gnu.org/licenses/gpl-3.0.txt>.
+#
+# name: TODO
+# date: 2016DEC23
+# prog: pr
+# desc: Page Gluts: read docs/ABOUT.txt
+#======
+
+2016DEC23
+
+* Fix errors
+
+2016JAN21
+
+TESTS
+* load a page
+- check totals of page and resources
+- check link testing valid for all links 
+- check all links collected
+
+* check page totals
+
+NEW FEATURES
+* cli with options
+1 - debug ON/OFF
+0 - call query list from file
+
+* reports
+0 - export data to file as json for further use
+
+* enumeration
+0 - enumerate resources per url
+ 
+
+IMPROVEMENTS
+
+* Page queries URL
+- list of URLS obtained
+- when looping thru urls
++ check if url is requested by page?
++ ie: image, css file NOT .html file found as link in page
++ another hint is via content-type
+
+* re-check resources for broken urls and fix
+- sometimes resource links found on pages are relative
+- when I do a check if they are valid, rel links will break
+- fix them, then re-try
+
+
+# vim: ff=unix:ts=4:sw=4:tw=78:noai:expandtab

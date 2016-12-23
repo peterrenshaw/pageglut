@@ -2,6 +2,36 @@
 # ~*~ encoding: utf-8 ~*~
 
 
+#=======
+#                                  __      __ 
+#    ____  ____ _____ ____  ____ _/ /_  __/ /_
+#   / __ \/ __ `/ __ `/ _ \/ __ `/ / / / / __/
+#  / /_/ / /_/ / /_/ /  __/ /_/ / / /_/ / /_  
+# / .___/\__,_/\__, /\___/\__, /_/\__,_/\__/  
+#/_/          /____/     /____/               
+#
+# This file is part of Page Glut.
+#
+# Page Glut is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# Page Glut is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Page Glut.  If not, see <http://www.gnu.org/licenses/gpl-3.0.txt>.
+#
+# name: pageglut.py
+# date: 2016NOV12
+# prog: pr
+# desc: Page Gluts: read docs/ABOUT.txt
+#======
+
+
 import argparse
 
 
@@ -14,7 +44,7 @@ import html5lib
 
 
 #======
-# name: extract.py
+# name: pageglut.py
 # date: 2016DEC23
 #       2016JAN21
 # prog: pr
@@ -68,16 +98,18 @@ PAGE_DATA = {'name': '',        # page name
 #======
 class Page(object):
      def __init__(self,
+                  debug,
                   objbs=bs4,
                   objtool=tools,
                   objreq=requests,
                   dict_data=PAGE_DATA):
          """initialise Page object"""
+         self.is_debug = debug
          #------ objects ------
          self.objbs = objbs       # beautiful soup extracts from page
          self.objtool = objtool   # access to tools (Display)
          self.objreq = objreq     # request object
-         self.objdis = objtool.Display()
+         self.objdis = objtool.Display(self.is_debug)
 
          #------ structure ------ 
          self.store = self.objtool.copy_dict(dict_data)
@@ -230,9 +262,15 @@ class Page(object):
          return urls
 
 
-def process(url):
+#-------
+# name: process
+# date: 2016DEC23
+# prog: pr
+# desc: wrapper for Page object to process one html index page at a time
+#-------
+def process(url, debug):
     """process a page for resources and find size"""
-    p = Page()
+    p = Page(debug)
     p.request(url)
 
     rsize = 0
@@ -246,12 +284,18 @@ def process(url):
     p = None
 
 
-def display(url):
+#-------
+# name: display
+# date: 2016DEC23
+# prog: pr
+# desc: basic cli display of a page resources used
+#-------
+def display(url, debug):
     """show output"""
     print("page\tresource\ttotal\t\turl")
     print("(b)\t(b)\t\t(Kb)")
     print("----------------------------------------------------------")
-    process(url)
+    process(url, debug)
     print("-----------------------------------------------------------")
 
 
@@ -265,11 +309,11 @@ def main():
     
     options = parser.parse_args()
 
-    if options.verbose:
-        tools.DEBUG = True
+    if options.verbose: debug = True
+    else: debug = tools.DEBUG
 
     if options.url:
-        display(options.url)
+        display(options.url, debug)
 
 
 
