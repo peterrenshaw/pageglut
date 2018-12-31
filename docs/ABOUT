@@ -29,7 +29,7 @@
 #======
 
 I wrote this quick hack to work out how heavy a page was. It works as shown below.
-Only two options, the -v option (verbosity) tells you everything that is goint on,
-the -u option (URL) lets you examine the index page found at this URL.
+(see README) Only two options, the -v option (verbosity) tells you everything that 
+is goint on, the -u option (URL) lets you examine the index page found at this URL.
 
 # vim: ff=unix:ts=4:sw=4:tw=78:noai:expandtab

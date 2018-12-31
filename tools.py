@@ -30,7 +30,7 @@
 #       2016JAN12
 # prog: pr
 # desc: misc tools used, Page Glut: read docs/ABOUT.txt
-# sorc: <https://github.com/kvesteri/validators>
+# sorc: validators: <https://github.com/kvesteri/validators>
 #======
 
 
@@ -38,7 +38,7 @@ import os.path        # url2filename
 import urllib.parse   # url_extract, url_parse 
 
 
-import validators     # is_valid_url
+import validators     # is_valid_url required for badly formed url's 
 
 
 DEBUG = False
@@ -77,7 +77,6 @@ class Display(object):
 def is_valid_url(url):
     """do we have a valid usable URL?"""
     if url:
-        #return True
         return validators.url(url)
     else:
         return False
