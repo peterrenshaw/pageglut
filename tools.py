@@ -30,6 +30,7 @@
 #       2016JAN12
 # prog: pr
 # desc: misc tools used, Page Glut: read docs/ABOUT.txt
+# sorc: <https://github.com/kvesteri/validators>
 #======
 
 
@@ -76,6 +77,7 @@ class Display(object):
 def is_valid_url(url):
     """do we have a valid usable URL?"""
     if url:
+        #return True
         return validators.url(url)
     else:
         return False

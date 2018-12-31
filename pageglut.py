@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # ~*~ encoding: utf-8 ~*~
 
 
@@ -26,9 +26,13 @@
 # along with Page Glut.  If not, see <http://www.gnu.org/licenses/gpl-3.0.txt>.
 #
 # name: pageglut.py
-# date: 2016NOV12
+# date: 2018DEC31
+#       2016NOV12
 # prog: pr
 # desc: Page Gluts: read docs/ABOUT.txt
+# sorc: BS4:       <https://github.com/newvem/beautifulsoup>
+#       Decorator: <https://pypi.org/simple/decorator/>
+#       encodings: <https://github.com/gsnedders/python-webencodings>
 #======
 
 
